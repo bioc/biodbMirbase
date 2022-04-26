@@ -1,6 +1,6 @@
 Package: biodbMirbase
 Title: biodbMirbase, a library for connecting to miRBase mature database
-Version: 1.0.0
+Version: 1.1.0
 Authors@R: 
     c(person(given = "Pierrick",
              family = "Roger",
