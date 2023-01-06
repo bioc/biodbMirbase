@@ -9,8 +9,10 @@
 The biodbMirbase library is an extension of the biodb framework package, that provides access to miRBase mature database. It allows to retrieve entries by their accession number, and run specific web services. Description: The biodbMirbase library provides access to the miRBase Database, using biodb package framework.
 }
 \details{
-See vignette biodbMirbase:\preformatted{vignette('biodbMirbase', package='biodbMirbase')
-}
+See vignette biodbMirbase:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{vignette('biodbMirbase', package='biodbMirbase')
+}\if{html}{\out{</div>}}
 }
 \seealso{
 \link{MirbaseMatureConn}.
