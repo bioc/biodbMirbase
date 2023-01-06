@@ -24,3 +24,4 @@
 ^R_front$
 ^.BBSoptions$
 ^.*rds$
+^.gitlab-ci.yml$
