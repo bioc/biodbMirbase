@@ -30,18 +30,26 @@ private=list(
 
 doDownload=function() {
 
-    url <- self$getPropValSlot('urls', 'dwnld.url')
-    gz.url <- biodb::BiodbUrl$new(url=url)
+    u <- self$getPropValSlot('urls', 'dwnld.url')
+    url <- biodb::BiodbUrl$new(url=u)
     sched <- self$getBiodb()$getRequestScheduler()
-    sched$downloadFile(url=gz.url, dest.file=self$getDownloadPath())
+    sched$downloadFile(url=url, dest.file=self$getDownloadPath())
 }
 
 ,doExtractDownload=function() {
 
     # Read file
-    fd <- gzfile(self$getDownloadPath(), 'r')
-    lines <- readLines(fd)
+    fd <- file(self$getDownloadPath(), 'r')
+    entries <- readLines(fd)
     close(fd)
+    
+    # Remove HTML tags
+    entries <- gsub('</?p>', '', entries, perl=TRUE)
+    entries <- gsub('<br>', '\n', entries, perl=TRUE)
+    entries <- gsub('&gt;', ">", entries, perl=TRUE)
+
+    # Convert to list
+    lines <- strsplit(entries, "\n")[[1]]
 
     # Get all entry IDs
     ids <- sub('^.*(MIMAT[0-9]+).*$', '\\1', grep('MIMAT', lines, value=TRUE),
@@ -88,9 +96,13 @@ doDownload=function() {
 
 ,doGetEntryPageUrl=function(id) {
 
-    url <- c(self$getPropValSlot('urls', 'base.url'), 'cgi-bin', 'mature.pl')
-    v <- vapply(id, function(x) biodb::BiodbUrl$new(url=url,
-        params=list(mature_acc=x))$toString(), FUN.VALUE='')
+#    url <- c(self$getPropValSlot('urls', 'base.url'), 'mature')
+#    v <- vapply(id, function(x) biodb::BiodbUrl$new(url=c(url, x))$toString(),
+#                FUN.VALUE='')
+
+    # 2023-08-10 Disabled
+    # Pages return "Server Error (500)"
+    return(rep(NA_character_, length(id)))
 
     return(v)
 }
