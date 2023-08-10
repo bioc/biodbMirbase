@@ -18,11 +18,11 @@ databases:
     scheduler.n: 3
     urls:
       # Base URL of the database server, where to find entry pages
-      base.url: http://www.mirbase.org/
+      base.url: https://www.mirbase.org/
       # Download URL
-      dwnld.url: https://www.mirbase.org/ftp/CURRENT/mature.fa.gz
+      dwnld.url: https://www.mirbase.org/download/CURRENT/mature.fa
     downloadable: true
-    dwnld.ext: gz
+    dwnld.ext: txt
 
 fields:
   mirbase.mature.id:
