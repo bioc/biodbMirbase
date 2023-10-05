@@ -1,6 +1,6 @@
 Package: biodbMirbase
 Title: biodbMirbase, a library for connecting to miRBase mature database
-Version: 1.5.1
+Version: 1.5.2
 Authors@R: 
     c(person(given = "Pierrick",
              family = "Roger",
@@ -39,3 +39,6 @@ Collate:
     'MirbaseMatureConn.R'
     'MirbaseMatureEntry.R'
     'package.R'
+    'zzz.R'
+PackageStatus: Deprecated
+    
